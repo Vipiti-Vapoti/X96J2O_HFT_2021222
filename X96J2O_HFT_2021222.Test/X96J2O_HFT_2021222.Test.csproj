@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\X96J2O_HFT_2021222.Logic\X96J2O_HFT_2021222.Logic.csproj" />
+    <ProjectReference Include="..\X96J2O_HFT_2021222.Models\X96J2O_HFT_2021222.Models.csproj" />
+    <ProjectReference Include="..\X96J2O_HFT_2021222.Repository\X96J2O_HFT_2021222.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
