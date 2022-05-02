@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace X96J2O_HFT_2021222.Logic
 {
-    public class RentLogic : IRentLogic
+    public class RentLogic 
     {
         IReporitory<Rent> repo;
 
