@@ -11,9 +11,9 @@ namespace X96J2O_HFT_2021222.Logic
 {
     public class BrandLogic : IBrandLogic
     {
-        IReporitory<Brand> repo;
+        IRepository<Brand> repo;
 
-        public BrandLogic(IReporitory<Brand> repo)
+        public BrandLogic(IRepository<Brand> repo)
         {
             this.repo = repo;
         }

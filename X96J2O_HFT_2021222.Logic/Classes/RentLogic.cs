@@ -9,18 +9,18 @@ namespace X96J2O_HFT_2021222.Logic
 {
     public class RentLogic 
     {
-        IReporitory<Rent> repo;
+        IRepository<Rent> repo;
 
-        public RentLogic(IReporitory<Rent> repo)
+        public RentLogic(IRepository<Rent> repo)
         {
             this.repo = repo;
         }
 
         public void Create(Rent item)
         {
-            if (item.Mail.Length < 6)
+            if (item.In != null && item.In?.Subtract(item.Out).TotalDays>0)
             {
-                throw new ArgumentException("Mail to shoort...");
+                throw new ArgumentException("Invalid In time...");
             }
             this.repo.Create(item);
         }

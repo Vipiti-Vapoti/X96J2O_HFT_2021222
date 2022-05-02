@@ -11,9 +11,9 @@ namespace X96J2O_HFT_2021222.Logic
 {
     public class CarLogic : ICarLogic
     {
-        IReporitory<Car> repo;
+        IRepository<Car> repo;
 
-        public CarLogic(IReporitory<Car> repo)
+        public CarLogic(IRepository<Car> repo)
         {
             this.repo = repo;
         }
