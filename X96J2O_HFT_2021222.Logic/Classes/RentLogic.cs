@@ -18,7 +18,7 @@ namespace X96J2O_HFT_2021222.Logic
 
         public void Create(Rent item)
         {
-            if (item.In != null && item.In?.Subtract(item.Out).TotalDays>0)
+            if (item.In != null && DateTime.Parse(item.In).Subtract(DateTime.Parse(item.Out)).TotalDays>0)
             {
                 throw new ArgumentException("Invalid In time...");
             }
@@ -52,14 +52,14 @@ namespace X96J2O_HFT_2021222.Logic
         //Non CRUD-S
         public IEnumerable<KeyValuePair<string, double>> GetAvarageInComePerBrandPerYear(int year)
         {
-            return from x in repo.ReadAll().Where(t=> t.In!=null && t.Out.Year.Equals(year))
+            return from x in repo.ReadAll().Where(t=> t.In!=null && DateTime.Parse(t.Out).Year.Equals(year))
                    group x by x.Car.Brand.Name into g
                    select new KeyValuePair<string, double>
-                   (g.Key, g.Average(t => t.Car.RentPrice));
+                   (g.Key, g.Average(t =>t.Car.RentPrice * DateTime.Parse(t.In).Subtract(DateTime.Parse(t.Out)).TotalDays));
         }
         public IEnumerable<int> HasToPayFine()
         {
-            return this.repo.ReadAll().Where(t => t.In == null && DateTime.Now.Subtract(t.Out).TotalDays > 365).Select(t => t.Id).ToList();
+            return this.repo.ReadAll().Where(t => t.In == null && DateTime.Now.Subtract(DateTime.Parse(t.Out)).TotalDays > 365).Select(t => t.Id).ToList();
         }
         public IEnumerable<int> StillOpenRentsById()
         {
