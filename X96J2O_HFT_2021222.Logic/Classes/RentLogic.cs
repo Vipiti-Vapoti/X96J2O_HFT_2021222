@@ -57,11 +57,11 @@ namespace X96J2O_HFT_2021222.Logic
                    select new KeyValuePair<string, double>
                    (g.Key, g.Average(t => t.Car.RentPrice));
         }
-        public List<int> HasToPayFine()
+        public IEnumerable<int> HasToPayFine()
         {
             return this.repo.ReadAll().Where(t => t.In == null && DateTime.Now.Subtract(t.Out).TotalDays > 365).Select(t => t.Id).ToList();
         }
-        public List<int> StillOpenRentsById()
+        public IEnumerable<int> StillOpenRentsById()
         {
             return repo.ReadAll().Where(t => t.In == null).Select(t => t.CarId).ToList();
         }
