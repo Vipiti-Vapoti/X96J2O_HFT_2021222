@@ -8,7 +8,7 @@ using X96J2O_HFT_2021222.Repository.Interfaces;
 
 namespace X96J2O_HFT_2021222.Repository.Classes
 {
-    public class BrandRepository : Repository<Brand>, IReporitory<Brand>
+    public class BrandRepository : Repository<Brand>, IRepository<Brand>
     {
         public BrandRepository(RentDbContext ctx) : base(ctx)
         {

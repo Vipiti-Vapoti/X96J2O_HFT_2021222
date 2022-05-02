@@ -8,7 +8,7 @@ using X96J2O_HFT_2021222.Repository.Interfaces;
 
 namespace X96J2O_HFT_2021222.Repository.Classes
 {
-    internal class CarRepository : Repository<Car>, IReporitory<Car>
+    internal class CarRepository : Repository<Car>, IRepository<Car>
     {
         public CarRepository(RentDbContext ctx) : base(ctx)
         {

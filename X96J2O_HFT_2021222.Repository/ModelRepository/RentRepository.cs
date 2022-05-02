@@ -8,7 +8,7 @@ using X96J2O_HFT_2021222.Repository.Interfaces;
 
 namespace X96J2O_HFT_2021222.Repository.Classes
 {
-    public class RentRepository : Repository<Rent>,IReporitory<Rent> {
+    public class RentRepository : Repository<Rent>,IRepository<Rent> {
         public RentRepository(RentDbContext ctx) : base(ctx)
         {
         }
