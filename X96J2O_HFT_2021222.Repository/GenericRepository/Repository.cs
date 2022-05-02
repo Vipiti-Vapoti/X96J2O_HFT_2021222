@@ -7,7 +7,7 @@ using X96J2O_HFT_2021222.Repository.Interfaces;
 
 namespace X96J2O_HFT_2021222.Repository.Classes
 {
-    public abstract class Repository <T>:IReporitory<T> where T : class
+    public abstract class Repository <T>:IRepository<T> where T : class
     {
         protected RentDbContext ctx;
         public Repository(RentDbContext ctx)
