@@ -1,0 +1,66 @@
+﻿using System;
+using X96J2O_HFT_2021222.Models;
+using X96J2O_HFT_2021222.Repository.Interfaces;
+using X96J2O_HFT_2021222.Repository;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace X96J2O_HFT_2021222.Logic
+{
+    public class RentLogic : IRentLogic
+    {
+        IReporitory<Rent> repo;
+
+        public RentLogic(IReporitory<Rent> repo)
+        {
+            this.repo = repo;
+        }
+
+        public void Create(Rent item)
+        {
+            if (item.Mail.Length < 6)
+            {
+                throw new ArgumentException("Mail to shoort...");
+            }
+            this.repo.Create(item);
+        }
+
+        public void Delete(int id)
+        {
+            this.repo.Delete(id);
+        }
+
+        public Rent Read(int id)
+        {
+            var rent = this.repo.Read(id);
+            if (rent == null)
+            {
+                throw new ArgumentException("Rent not exist!");
+            }
+            return rent;
+        }
+
+        public IQueryable<Rent> ReadAll()
+        {
+            return this.repo.ReadAll();
+        }
+
+        public void Update(Rent item)
+        {
+            this.repo.Update(item);
+        }
+        //Non CRUD-S
+        public double? GetAvarageInComePerYear(int year)
+        {
+            return this.repo.ReadAll().Where(t => t.Out.Year == year).Average(t => t.Car.RentPrice);
+        }
+        public List<int> HasToPayFine()
+        {
+            return this.repo.ReadAll().Where(t => t.In == null && DateTime.Now.Subtract(t.Out).TotalDays > 365).Select(t => t.Id).ToList();
+        }
+        public List<int> StillOpenRentsById()
+        {
+            return repo.ReadAll().Where(t => t.In == null).Select(t => t.CarId).ToList();
+        }
+    }
+}
