@@ -12,8 +12,9 @@ namespace X96J2O_HFT_2021222.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int RentId { get; set; }
-
+        public int Id { get; set; }
+        public int RentTime { get; set; }
+        public int Cost { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
@@ -23,5 +24,8 @@ namespace X96J2O_HFT_2021222.Models
         [NotMapped]
         public virtual Car Car { get; set; }
 
+        [ForeignKey(nameof(Car))]
+        public int CarId { get; set; }
+        
     }
 }
