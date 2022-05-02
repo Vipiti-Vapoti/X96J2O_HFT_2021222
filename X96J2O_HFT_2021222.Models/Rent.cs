@@ -13,11 +13,10 @@ namespace X96J2O_HFT_2021222.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public int RentTime { get; set; }
-        public int Cost { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
+        public  DateTime Out { get; set; }
+        public DateTime? In { get; set; }
         public string Phone { get; set; }
         public string Mail { get; set; }
 
