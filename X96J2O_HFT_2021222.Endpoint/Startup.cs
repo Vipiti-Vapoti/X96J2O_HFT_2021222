@@ -1,21 +1,50 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using X96J2O_HFT_2021222.Logic;
+using X96J2O_HFT_2021222.Models;
+using X96J2O_HFT_2021222.Repository;
+using X96J2O_HFT_2021222.Repository.Classes;
+using X96J2O_HFT_2021222.Repository.Interfaces;
 
 namespace X96J2O_HFT_2021222.Endpoint
 {
     public class Startup
     {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
         // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<RentDbContext>();
+
+            services.AddTransient<IRepository<Car>, CarRepository>();
+            services.AddTransient<IRepository<Brand>, BrandRepository>();
+            services.AddTransient<IRepository<Rent>, RentRepository>();
+
+            services.AddTransient<ICarLogic, CarLogic>();
+            services.AddTransient<IRentLogic, RentLogic>();
+            services.AddTransient<IBrandLogic, BrandLogic>();
+
+            services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "X96J2O_HFT_2021222.Endpoint", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -24,16 +53,17 @@ namespace X96J2O_HFT_2021222.Endpoint
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "X96J2O_HFT_2021222.Endpoint v1"));
             }
 
             app.UseRouting();
 
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapControllers();
             });
         }
     }

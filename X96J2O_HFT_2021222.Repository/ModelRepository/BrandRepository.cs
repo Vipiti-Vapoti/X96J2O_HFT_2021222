@@ -16,7 +16,7 @@ namespace X96J2O_HFT_2021222.Repository.Classes
 
         public override Brand Read(int id)
         {
-            return ctx.Brands.FirstOrDefault(t => t.brandId.Equals(id));
+            return ctx.Brands.FirstOrDefault(t => t.brandId==id);
         }
 
         public override void Update(Brand item)

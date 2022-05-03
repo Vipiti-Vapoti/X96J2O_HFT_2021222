@@ -30,7 +30,16 @@ namespace X96J2O_HFT_2021222.Logic
 
         public Brand Read(int id)
         {
-            throw new NotImplementedException();
+            var brand = this.repo.Read(id);
+            if (brand != null)
+            {
+                return brand;
+
+            }
+            else
+            {
+                throw new ArgumentException("car not exist!");
+            }
         }
 
         public IQueryable<Brand> ReadAll()

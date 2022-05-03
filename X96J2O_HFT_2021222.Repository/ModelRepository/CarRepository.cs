@@ -8,7 +8,7 @@ using X96J2O_HFT_2021222.Repository.Interfaces;
 
 namespace X96J2O_HFT_2021222.Repository.Classes
 {
-    internal class CarRepository : Repository<Car>, IRepository<Car>
+    public class CarRepository : Repository<Car>, IRepository<Car>
     {
         public CarRepository(RentDbContext ctx) : base(ctx)
         {
@@ -16,7 +16,7 @@ namespace X96J2O_HFT_2021222.Repository.Classes
 
         public override Car Read(int id)
         {
-            return ctx.Cars.FirstOrDefault(car => car.carId.Equals(id));
+            return ctx.Cars.FirstOrDefault(car => car.carId == id);
         }
 
         public override void Update(Car item)

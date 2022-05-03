@@ -15,7 +15,7 @@ namespace X96J2O_HFT_2021222.Repository.Classes
 
         public override Rent Read(int id)
         {
-            return ctx.Rents.FirstOrDefault(t=>t.rentId.Equals(id));
+            return ctx.Rents.FirstOrDefault(t=>t.rentId ==id);
         }
 
         public override void Update(Rent item)

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace X96J2O_HFT_2021222.Logic
 {
-    public class RentLogic 
+    public class RentLogic : IRentLogic
     {
         IRepository<Rent> repo;
 
@@ -26,7 +26,7 @@ namespace X96J2O_HFT_2021222.Logic
             {
                 throw new ArgumentException("Invalid Rent time...");
             }
-            
+
             this.repo.Create(item);
         }
 
@@ -38,11 +38,12 @@ namespace X96J2O_HFT_2021222.Logic
         public Rent Read(int id)
         {
             var rent = this.repo.Read(id);
-            if (rent == null)
+            if (rent != null)
             {
-                throw new ArgumentException("Rent not exist!");
+                return rent;
+                
             }
-            return rent;
+            throw new ArgumentException("Rent not exist!");
         }
 
         public IQueryable<Rent> ReadAll()
@@ -60,7 +61,7 @@ namespace X96J2O_HFT_2021222.Logic
             return from x in repo.ReadAll().Where(t => DateTime.Parse(t.Out).Year.Equals(year)).ToList()
                    group x by x.Car.Model into g
                    select new KeyValuePair<string, double>
-                   (g.Key, g.Average(  t =>t.In!=null? (t.Car.RentPrice * (DateTime.Parse(t.In).Subtract(DateTime.Parse(t.Out)).TotalDays)): t.Car.RentPrice*0));
+                   (g.Key, g.Average(t => t.In != null ? (t.Car.RentPrice * (DateTime.Parse(t.In).Subtract(DateTime.Parse(t.Out)).TotalDays)) : t.Car.RentPrice * 0));
 
         }
         public IEnumerable<int> HasToPayFine()
