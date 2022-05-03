@@ -39,24 +39,24 @@ namespace X96J2O_HFT_2021222.Repository
                 .HasForeignKey(rent=>rent.CarId)
                 .OnDelete(DeleteBehavior.Cascade));
 
-            Brand opel = new Brand() { Id = 1, Name = "Opel" };
-            Brand suzuki = new Brand() { Id = 2, Name = "Suzuki" };
-            Brand volvo = new Brand() { Id = 3, Name = "Volvo" };
+            Brand opel = new Brand() { brandId = 1, Name = "Opel" };
+            Brand suzuki = new Brand() { brandId = 2, Name = "Suzuki" };
+            Brand volvo = new Brand() { brandId = 3, Name = "Volvo" };
 
-            Car astra = new Car() { Id = 1, BrandId = opel.Id, RentPrice = 10000, Model = "Opel Astra G"};
-            Car corsa = new Car() { Id = 2, BrandId = opel.Id, RentPrice = 15000, Model = "Opel Corsa-e" };
-            Car vitara = new Car() { Id = 3, BrandId = suzuki.Id, RentPrice = 25000, Model = "Suzuki Vitara" };
-            Car celerio = new Car() { Id = 4, BrandId = suzuki.Id, RentPrice = 15000, Model = "Suzuki Celerio" };
-            Car s90 = new Car() { Id = 5, BrandId = volvo.Id, RentPrice = 80000, Model = "Volvo s90" };
-            Car v60 = new Car() { Id = 6, BrandId = volvo.Id, RentPrice = 65000, Model = "volvo v60" };
+            Car astra = new Car() { carId = 1, BrandId = opel.brandId, RentPrice = 10000, Model = "Opel Astra G"};
+            Car corsa = new Car() { carId = 2, BrandId = opel.brandId, RentPrice = 15000, Model = "Opel Corsa-e" };
+            Car vitara = new Car() { carId = 3, BrandId = suzuki.brandId, RentPrice = 25000, Model = "Suzuki Vitara" };
+            Car celerio = new Car() { carId = 4, BrandId = suzuki.brandId, RentPrice = 15000, Model = "Suzuki Celerio" };
+            Car s90 = new Car() { carId = 5, BrandId = volvo.brandId, RentPrice = 80000, Model = "Volvo s90" };
+            Car v60 = new Car() { carId = 6, BrandId = volvo.brandId, RentPrice = 65000, Model = "volvo v60" };
 
 
-            Rent sanya = new Rent() { Id = 1,CarId=astra.Id ,FirstName = "Kis", LastName = "Sándor", Mail = "kissanya@gmail.com", Phone = "+3680323523",Out="2021.04.13", In="2021.04.20"};
-            Rent bela = new Rent() { Id = 2,CarId=corsa.Id, FirstName = "Nagy", LastName = "Bela", Mail = "nagybela@gmail.com", Phone = "+36768246010", Out = "2022.05.13", In = "2022.05.23" };
-            Rent geza = new Rent() { Id = 3,CarId = vitara.Id, FirstName = "Kis", LastName = "Laca", Mail = "kissanya@gmail.com", Phone = "+3612676212",Out ="2022.04.15", In = "2022.05.26" };
-            Rent jozska = new Rent() { Id =4,CarId = celerio.Id, FirstName = "Bauer", LastName = "Sándor", Mail = "kissanya@gmail.com", Phone = "+36901233251",Out ="2022.04.12", In ="2021.04.20" };
-            Rent fonokne = new Rent() { Id = 5,CarId = v60.Id, FirstName = "Fonokne", LastName = "Julcsi", Mail = "kissanya@gmail.com", Phone = "+3680898765", Out ="2021.04.13", In = "2022.04.20" };
-            Rent fonok = new Rent() { Id = 6,CarId = s90.Id, FirstName = "Fonok", LastName = "Ferenc", Mail = "kissanya@gmail.com", Phone = "+36994532171", Out = "2022.01.01", In = null };
+            Rent sanya = new Rent() { rentId = 1,CarId=astra.carId ,FirstName = "Kis", LastName = "Sándor", Mail = "kissanya@gmail.com", Phone = "+3680323523",Out="2021.04.13", In="2021.04.20"};
+            Rent bela = new Rent() { rentId = 2,CarId=corsa.carId, FirstName = "Nagy", LastName = "Bela", Mail = "nagybela@gmail.com", Phone = "+36768246010", Out = "2022.05.13", In = "2022.05.23" };
+            Rent geza = new Rent() { rentId = 3,CarId = vitara.carId, FirstName = "Kis", LastName = "Laca", Mail = "kissanya@gmail.com", Phone = "+3612676212",Out ="2022.04.15", In = "2022.05.26" };
+            Rent jozska = new Rent() { rentId =4,CarId = celerio.carId, FirstName = "Bauer", LastName = "Sándor", Mail = "kissanya@gmail.com", Phone = "+36901233251",Out ="2022.04.12", In ="2021.04.20" };
+            Rent fonokne = new Rent() { rentId = 5,CarId = v60.carId, FirstName = "Fonokne", LastName = "Julcsi", Mail = "kissanya@gmail.com", Phone = "+3680898765", Out ="2021.04.13", In = "2022.04.20" };
+            Rent fonok = new Rent() { rentId = 6,CarId = s90.carId, FirstName = "Fonok", LastName = "Ferenc", Mail = "kissanya@gmail.com", Phone = "+36994532171", Out = "2022.01.01", In = null };
 
             modelBuilder.Entity<Brand>().HasData(opel, suzuki, volvo);
             modelBuilder.Entity<Car>().HasData(astra, vitara, corsa, celerio, s90, v60);

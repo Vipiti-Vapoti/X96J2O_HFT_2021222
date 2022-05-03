@@ -10,7 +10,7 @@ namespace X96J2O_HFT_2021222.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int carId { get; set; }
 
         public string Model { get; set; }
 

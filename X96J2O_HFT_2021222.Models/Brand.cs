@@ -13,7 +13,7 @@ namespace X96J2O_HFT_2021222.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int brandId { get; set; }
 
         public string Name { get; set; }
 
@@ -24,5 +24,6 @@ namespace X96J2O_HFT_2021222.Models
         {
             Cars = new HashSet<Car>();
         }
+
     }
 }

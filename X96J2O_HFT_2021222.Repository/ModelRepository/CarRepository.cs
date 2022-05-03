@@ -16,12 +16,12 @@ namespace X96J2O_HFT_2021222.Repository.Classes
 
         public override Car Read(int id)
         {
-            return ctx.Cars.FirstOrDefault(t => t.Id == id);
+            return ctx.Cars.FirstOrDefault(car => car.carId.Equals(id));
         }
 
         public override void Update(Car item)
         {
-            var old = Read(item.Id);
+            var old = Read(item.carId);
             foreach (var prop in old.GetType().GetProperties())
             {
                 prop.SetValue(old, prop.GetValue(item));

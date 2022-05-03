@@ -9,7 +9,7 @@ using X96J2O_HFT_2021222.Models;
 
 namespace X96J2O_HFT_2021222.Logic
 {
-    public class CarLogic : ICarLogic
+    public class CarLogic 
     {
         IRepository<Car> repo;
 
@@ -20,7 +20,10 @@ namespace X96J2O_HFT_2021222.Logic
 
         public void Create(Car item)
         {
-
+            if (item==null)
+            {
+                throw new ArgumentException("Invalid car!");
+            }
             this.repo.Create(item);
         }
 
@@ -32,11 +35,16 @@ namespace X96J2O_HFT_2021222.Logic
         public Car Read(int id)
         {
             var car = this.repo.Read(id);
-            if (car == null)
+            if (car != null)
+            {
+                return car;
+
+            }
+            else
             {
                 throw new ArgumentException("car not exist!");
             }
-            return car;
+            
         }
 
         public IQueryable<Car> ReadAll()
