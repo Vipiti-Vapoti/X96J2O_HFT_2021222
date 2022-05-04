@@ -50,7 +50,7 @@ namespace X96J2O_HFT_2021222.Client
 
             if (items.Count != 0)
             {
-                Console.WriteLine("ID'S:");
+                Console.WriteLine("Renter ID-S who has to pay latency fine:");
                 foreach (var item in items)
                 {
                     Console.WriteLine(item);
@@ -71,7 +71,7 @@ namespace X96J2O_HFT_2021222.Client
             var items = rest.Get<long>("Stat/StillOpenRentsByCarId").ToList();
             if (items != null)
             {
-                Console.WriteLine("ID'S:");
+                Console.WriteLine("Car ID-S whitch are still out:");
                 foreach (var item in items)
                 {
                     Console.WriteLine(item);
