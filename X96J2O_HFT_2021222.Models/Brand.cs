@@ -19,6 +19,7 @@ namespace X96J2O_HFT_2021222.Models
         public string Name { get; set; }
 
         [NotMapped]
+        [JsonIgnore]
         public virtual ICollection<Car> Cars { get; set; }
 
         public Brand()

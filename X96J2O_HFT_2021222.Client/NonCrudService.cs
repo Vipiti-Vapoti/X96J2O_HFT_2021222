@@ -17,14 +17,14 @@ namespace X96J2O_HFT_2021222.Client
 
         public void AvgCarPrice()
         {
-            double price = rest.GetSingle<double>("Stat/AvgCarPrice");
+            double price = rest.GetSingle<double>("Stat/AvgCarRentPrice");
             Console.WriteLine($"Averege car price = {price}");
             Console.ReadLine();
         }
 
         public void AvgRentPriceByBrand()
         {
-            var items = rest.Get<KeyValuePair<string, double>>("Stat/AvgRentPriceByBrands");
+            var items = rest.Get<KeyValuePair<string, double>>("Stat/AvgPriceByBrands");
             Console.WriteLine("Brand\tAvgPrice");
             foreach (var item in items)
             {
@@ -32,9 +32,11 @@ namespace X96J2O_HFT_2021222.Client
             }
             Console.ReadLine();
         }
-        public void AvgGetAvarageInComePerCarModellPerYearCarRentPrice(int year)
+        public void AvgGetAvarageInComePerCarModellPerYearCarRentPrice()
         {
-            var items = rest.Get<KeyValuePair<string, double>>("Stat/AvgRentPriceByBrands");
+            Console.WriteLine("Enter a Year:");
+            int year = int.Parse(Console.ReadLine());
+            var items = rest.Getp<KeyValuePair<string, double>>(year,"Stat/GetAvarageInComePerCarModellPerYearCarRentPrice");
             Console.WriteLine("Car\tAvgIncome");
             foreach (var item in items)
             {
@@ -44,20 +46,11 @@ namespace X96J2O_HFT_2021222.Client
         }
         public void HastoPayFine()
         {
-            var items = rest.Get<List<int>>("Stat/HasToPayRentFine");
-            Console.WriteLine("ID'S:");
-            foreach (var item in items)
+            var items = rest.Get<long>("Stat/HasToPayRentFine").ToList();
+
+            if (items.Count != 0)
             {
-                Console.WriteLine(item);
-            }
-            Console.ReadLine();
-        }
-        public void StillOpenRentsByCarId()
-        {
-            var items = rest.Get<List<int>>("Stat/StillOpenRentsByCarId");
-            Console.WriteLine("ID'S:");
-            if (items != null)
-            {
+                Console.WriteLine("ID'S:");
                 foreach (var item in items)
                 {
                     Console.WriteLine(item);
@@ -65,8 +58,33 @@ namespace X96J2O_HFT_2021222.Client
                 Console.ReadLine();
 
             }
-            Console.WriteLine("There is no data in here...");
-            Console.ReadLine();
+            else if (items.Count==0)
+            {
+                Console.WriteLine("There is no data in here...");
+                Console.ReadLine();
+            }
+            
+            
+        }
+        public void StillOpenRentsByCarId()
+        {
+            var items = rest.Get<long>("Stat/StillOpenRentsByCarId").ToList();
+            if (items != null)
+            {
+                Console.WriteLine("ID'S:");
+                foreach (var item in items)
+                {
+                    Console.WriteLine(item);
+                }
+                Console.ReadLine();
+
+            }
+            else if (items.Count == 0)
+            {
+                Console.WriteLine("There is no data in here...");
+                Console.ReadLine();
+            }
+            
 
         }
 

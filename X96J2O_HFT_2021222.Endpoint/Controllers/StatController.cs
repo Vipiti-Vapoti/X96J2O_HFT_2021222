@@ -30,7 +30,8 @@ namespace X96J2O_HFT_2021222.Endpoint.Controllers
         {
             return carLogic.AVGRentPriceByBrands();
         }
-        [HttpGet]
+
+        [HttpGet("{year}")]
         public IEnumerable<KeyValuePair<string, double>> GetAvarageInComePerCarModellPerYearCarRentPrice(int year)
         {
             return rentLogic.GetAvarageInComePerCarModellPerYear(year);

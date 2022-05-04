@@ -22,6 +22,7 @@ namespace X96J2O_HFT_2021222.Models
 
         
         [NotMapped]
+        [JsonIgnore]
         public virtual ICollection<Rent> Rents { get; set; }
 
         [ForeignKey(nameof(Brand))]

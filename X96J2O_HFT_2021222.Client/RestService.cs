@@ -13,7 +13,7 @@ namespace X96J2O_HFT_2021222.Client
     {
         HttpClient client;
 
-        public RestService(string baseurl, string pingableEndpoint = "swagger")
+        public RestService(string baseurl, string pingableEndpoint = "Rent")
         {
             bool isOk = false;
             do
@@ -71,6 +71,21 @@ namespace X96J2O_HFT_2021222.Client
             }
             return items;
         }
+        public List<T> Getp<T>(int param,string endpoint)
+        {
+            List<T> items = new List<T>();
+            HttpResponseMessage response = client.GetAsync(endpoint + "/" + param.ToString()).GetAwaiter().GetResult();
+            if (response.IsSuccessStatusCode)
+            {
+                items = response.Content.ReadAsAsync<List<T>>().GetAwaiter().GetResult();
+            }
+            else
+            {
+                var error = response.Content.ReadAsAsync<RestExceptionInfo>().GetAwaiter().GetResult();
+                throw new ArgumentException(error.Msg);
+            }
+            return items;
+        }
 
         public T GetSingle<T>(string endpoint)
         {
@@ -103,6 +118,7 @@ namespace X96J2O_HFT_2021222.Client
             }
             return item;
         }
+
 
         public void Post<T>(T item, string endpoint)
         {

@@ -70,7 +70,7 @@ namespace X96J2O_HFT_2021222.Logic
         }
         public IEnumerable<int> StillOpenRentsByCarId()
         {
-            return repo.ReadAll().Where(t => t.In == null).Select(t => t.CarId).ToList();
+            return repo.ReadAll().Where(t => t.In == null).Select(t=>t.CarId).ToList();
         }
 
     }

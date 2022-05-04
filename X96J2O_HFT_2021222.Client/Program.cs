@@ -37,7 +37,7 @@ namespace X96J2O_HFT_2021222.Client
 
             var statsSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("Average car price", () => nonCrud.AvgCarPrice())
-                .Add("Average yearly income by carmodells", () => nonCrud.AvgGetAvarageInComePerCarModellPerYearCarRentPrice(2))
+                .Add("Average yearly income by carmodells", () => nonCrud.AvgGetAvarageInComePerCarModellPerYearCarRentPrice())
                 .Add("Average price by brands", () => nonCrud.AvgRentPriceByBrand())
                 .Add("Fines", () => nonCrud.HastoPayFine())
                 .Add("Open Rents", () => nonCrud.StillOpenRentsByCarId())

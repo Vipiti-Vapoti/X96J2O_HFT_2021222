@@ -54,13 +54,15 @@ namespace X96J2O_HFT_2021222.Repository
             Rent sanya = new Rent() { rentId = 1,CarId=astra.carId ,FirstName = "Kis", LastName = "Sándor", Mail = "kissanya@gmail.com", Phone = "+3680323523",Out="2021.04.13", In="2021.04.20"};
             Rent bela = new Rent() { rentId = 2,CarId=corsa.carId, FirstName = "Nagy", LastName = "Bela", Mail = "nagybela@gmail.com", Phone = "+36768246010", Out = "2022.05.13", In = "2022.05.23" };
             Rent geza = new Rent() { rentId = 3,CarId = vitara.carId, FirstName = "Kis", LastName = "Laca", Mail = "kissanya@gmail.com", Phone = "+3612676212",Out ="2022.04.15", In = "2022.05.26" };
-            Rent jozska = new Rent() { rentId =4,CarId = celerio.carId, FirstName = "Bauer", LastName = "Sándor", Mail = "kissanya@gmail.com", Phone = "+36901233251",Out ="2022.04.12", In ="2021.04.20" };
-            Rent fonokne = new Rent() { rentId = 5,CarId = v60.carId, FirstName = "Fonokne", LastName = "Julcsi", Mail = "kissanya@gmail.com", Phone = "+3680898765", Out ="2021.04.13", In = "2022.04.20" };
-            Rent fonok = new Rent() { rentId = 6,CarId = s90.carId, FirstName = "Fonok", LastName = "Ferenc", Mail = "kissanya@gmail.com", Phone = "+36994532171", Out = "2022.01.01", In = null };
+            Rent jozska = new Rent() { rentId =4,CarId = celerio.carId, FirstName = "Bauer", LastName = "Sándor", Mail = "bauer@gmail.com", Phone = "+36901233251",Out ="2022.04.12", In ="2021.04.20" };
+            Rent fonokne = new Rent() { rentId = 5,CarId = v60.carId, FirstName = "Fonokne", LastName = "Julcsi", Mail = "fonokne@gmail.com", Phone = "+3680898765", Out ="2021.04.13", In = "2022.04.20" };
+            Rent fonok2 = new Rent() { rentId = 7, CarId = v60.carId, FirstName = "Fonok2", LastName = "Ferenc", Mail = "foni2@gmail.com", Phone = "+36994532181", Out = "2021.01.01", In = null };
+            Rent fonok = new Rent() { rentId = 6,CarId = s90.carId, FirstName = "Fonok", LastName = "Ferenc", Mail = "foni@gmail.com", Phone = "+36994532171", Out = "2021.01.01", In = null };
+           
 
             modelBuilder.Entity<Brand>().HasData(opel, suzuki, volvo);
             modelBuilder.Entity<Car>().HasData(astra, vitara, corsa, celerio, s90, v60);
-            modelBuilder.Entity<Rent>().HasData(sanya, bela, geza, jozska, fonokne, fonok);
+            modelBuilder.Entity<Rent>().HasData(sanya, bela, geza, jozska, fonokne, fonok,fonok2);
         }
 
     }
