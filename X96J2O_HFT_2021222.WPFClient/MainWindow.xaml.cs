@@ -10,7 +10,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace X96J2O_HFT_2021222.WPFClient
@@ -23,6 +22,24 @@ namespace X96J2O_HFT_2021222.WPFClient
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click_Rent(object sender, RoutedEventArgs e)
+        {
+            RentEditor rentEditor = new RentEditor();
+            rentEditor.Show();
+        }
+
+        private void Button_Click_Car(object sender, RoutedEventArgs e)
+        {
+            CarEditor carEditor = new CarEditor();
+            carEditor.Show();
+        }
+
+        private void Button_Click_Brand(object sender, RoutedEventArgs e)
+        {
+            BrandEditor brandEditor = new BrandEditor();
+            brandEditor.Show();
         }
     }
 }

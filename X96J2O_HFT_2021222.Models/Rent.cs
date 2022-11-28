@@ -26,5 +26,6 @@ namespace X96J2O_HFT_2021222.Models
         [ForeignKey(nameof(Car))]
         public int CarId { get; set; }
         
+
     }
 }

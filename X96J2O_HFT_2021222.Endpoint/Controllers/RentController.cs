@@ -36,11 +36,11 @@ namespace X96J2O_HFT_2021222.Endpoint.Controllers
         [HttpPost]
         public void Create([FromBody] Rent value)
         {
-            this.logic.Update(value);
+            this.logic.Create(value);
         }
 
-
-        [HttpPut("{id}")]
+        //("{id}")
+        [HttpPut]
         public void Update([FromBody] Rent value)
         {
             this.logic.Update(value);

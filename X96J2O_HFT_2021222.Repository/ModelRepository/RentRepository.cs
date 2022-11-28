@@ -23,7 +23,11 @@ namespace X96J2O_HFT_2021222.Repository.Classes
             var old = Read(item.rentId);
             foreach (var prop in old.GetType().GetProperties())
             {
-                prop.SetValue(old, prop.GetValue(item));
+                // prop.SetValue(old, prop.GetValue(item));
+                if (prop.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
+                {
+                    prop.SetValue(old, prop.GetValue(item));
+                }
             }
             ctx.SaveChanges();
         }

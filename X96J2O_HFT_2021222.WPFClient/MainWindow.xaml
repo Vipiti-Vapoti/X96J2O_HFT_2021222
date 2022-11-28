@@ -4,9 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:X96J2O_HFT_2021222.WPFClient"
+            xmlns:MainWindowViewModel="clr-namespace:X96J2O_HFT_2021222.WPFClient.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Rent-a-Car" Height="516" Width="552">
     <Grid>
+
+        <StackPanel VerticalAlignment="Center">
+            <Button Content="Edit Rents" Grid.Column="0" Grid.Row="0"  Margin="20" Padding="10" Background="LightBlue" FontSize="30" FontFamily="Consolas" Click="Button_Click_Rent"/>
+            <Button Content="Edit Cars" Grid.Column="1" Grid.Row="0" Margin="20" Padding="10" Background="LightBlue" FontSize="30" FontFamily="Consolas" Click="Button_Click_Car"/>
+            <Button Content="Edit Brands" Grid.Column="0" Grid.Row="1"  Margin="20" Padding="10" Background="LightBlue" FontSize="30" FontFamily="Consolas" Click="Button_Click_Brand"/>
+        </StackPanel>
+        
 
     </Grid>
 </Window>
