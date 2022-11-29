@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Rent UI</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <h1>Rent Catalog</h1>
+    <div id="formdiv">
+        <div>
+            <label>First Name:</label>
+            <input type="text" id="firstname" />
+            <label>Last Name:</label>
+            <input type="text" id="lastname" />
+        </div>
+        <div>
+            <label>Phone:</label>
+            <input type="tel" id="phone" />
+            <label>Mail:</label>
+            <input type="email" id="mail" />
+            <label>Car:</label>
+            <select id="carselection"></select>
+        </div>
+
+
+        <div>
+            <label> Out:</label>
+            <input type="text" id="out" />
+            <label> In:</label>
+            <input type="text" id="in" />
+
+        </div>
+        <div>
+            <button type="button" onclick="create()">Add Rent</button>
+        </div>
+
+    </div>
+    <div id="updateformdiv">
+        <div>
+            <label>First Name:</label>
+            <input type="text" id="firstnametoupdate" />
+            <label>Last Name:</label>
+            <input type="text" id="lastnametoupdate" />
+        </div>
+        <div>
+            <label>Phone:</label>
+            <input type="tel" id="phonetoupdate" />
+            <label>Mail:</label>
+            <input type="email" id="mailtoupdate" />
+            <label>Car:</label>
+            <select id="carselectiontoupdate"></select>
+        </div>
+
+
+        <div>
+            <label> Out:</label>
+            <input type="text" id="outtoupdate" />
+            <label> In:</label>
+            <input type="text" id="intoupdate" />
+
+        </div>
+        <div>
+            <button type="button" onclick="update()">Update Rent</button>
+        </div>
+
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Phone</th>
+                <th>Mail</th>
+                <th>Car</th>
+                <th>Out</th>
+                <th>In</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea" />
+    </table>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
