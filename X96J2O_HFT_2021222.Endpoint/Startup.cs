@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using X96J2O_HFT_2021222.Endpoint.Services;
 using X96J2O_HFT_2021222.Logic;
 using X96J2O_HFT_2021222.Models;
 using X96J2O_HFT_2021222.Repository;
@@ -45,6 +46,7 @@ namespace X96J2O_HFT_2021222.Endpoint
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "X96J2O_HFT_2021222.Endpoint", Version = "v1" });
             });
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,6 +66,7 @@ namespace X96J2O_HFT_2021222.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }

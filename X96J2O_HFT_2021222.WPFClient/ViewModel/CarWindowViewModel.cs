@@ -60,9 +60,9 @@ namespace X96J2O_HFT_2021222.WPFClient.ViewModel
             if (!IsInDesignMode)
             {
               
-                Cars = new RestCollection<Car>("http://localhost:35445/", "Car");
+                Cars = new RestCollection<Car>("http://localhost:35445/", "Car", "hub");
                 
-                Brands = new RestCollection<Brand>("http://localhost:35445/", "Brand");
+                Brands = new RestCollection<Brand>("http://localhost:35445/", "Brand", "hub");
                 AddCarCommand = new RelayCommand(() =>
                 {
                     Cars.Add(new Car()

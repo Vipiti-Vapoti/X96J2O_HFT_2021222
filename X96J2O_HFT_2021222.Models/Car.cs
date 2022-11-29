@@ -28,9 +28,6 @@ namespace X96J2O_HFT_2021222.Models
         [ForeignKey(nameof(Brand))]
         public int BrandId { get; set; }
 
-        public Car()
-        {
-            
-        }
+
     }
 }

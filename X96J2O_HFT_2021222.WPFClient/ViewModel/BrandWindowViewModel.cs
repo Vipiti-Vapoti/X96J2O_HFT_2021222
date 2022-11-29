@@ -39,7 +39,16 @@ namespace X96J2O_HFT_2021222.WPFClient.ViewModel
             get { return selectedBrand; }
             set
             {
-                SetProperty(ref selectedBrand, value);
+
+                if (value != null)
+                {
+                    selectedBrand = new Brand()
+                    {
+                        brandId = value.brandId,
+                        Name = value.Name
+                    };
+                }
+                OnPropertyChanged();
                 (DeleteBrandCommand as RelayCommand).NotifyCanExecuteChanged();
                 (UpdateBrandCommand as RelayCommand).NotifyCanExecuteChanged();
             }
@@ -55,7 +64,7 @@ namespace X96J2O_HFT_2021222.WPFClient.ViewModel
                 AddBrandCommand = new RelayCommand(() =>
                 {
                     Brands.Add(new Brand()
-                    {
+                    {   
                         Name = selectedBrand.Name
                     });
                 });

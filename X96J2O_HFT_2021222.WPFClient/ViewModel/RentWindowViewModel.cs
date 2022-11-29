@@ -66,9 +66,8 @@ namespace X96J2O_HFT_2021222.WPFClient.ViewModel
         {
             if (!IsInDesignMode)
             {
-                Rents = new RestCollection<Rent>("http://localhost:35445/", "Rent");
-                Cars = new RestCollection<Car>("http://localhost:35445/", "Car");
-                Brands = new RestCollection<Brand>("http://localhost:35445/","Brand");
+                Rents = new RestCollection<Rent>("http://localhost:35445/", "Rent", "hub");
+                Cars = new RestCollection<Car>("http://localhost:35445/", "Car", "hub");
                 AddRentCommand = new RelayCommand(() =>
                 {
                     Rents.Add(new Rent()
